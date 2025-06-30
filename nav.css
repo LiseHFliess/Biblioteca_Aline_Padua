@@ -220,11 +220,14 @@ input[type="checkbox"]:checked ~ aside .aside-right {
     width: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 2;
-    pointer-events: none; /* desativa cliques até o menu ser aberto */
+    z-index: 999; /* alto o suficiente para cobrir tudo */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
   }
 
   input[type="checkbox"]:checked ~ aside {
+    opacity: 1;
     pointer-events: auto;
   }
 
@@ -282,4 +285,10 @@ input[type="checkbox"]:checked ~ aside .aside-right {
     margin: 0;
     padding-top: 30px;
   }
+}
+label {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999; /* bem alto para garantir que fique sobre tudo */
 }
