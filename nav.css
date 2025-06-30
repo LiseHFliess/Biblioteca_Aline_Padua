@@ -210,22 +210,8 @@ input[type="checkbox"]:checked ~ aside .aside-right {
   transform: translateX(100%);
 }
 
+
 /* RESPONSIVO */
-@media (min-width: 992px) {
-  .aside-left {
-    display: block;
-  }
-
-  .aside-right {
-    width: 60%;
-  }
-
-  .aside-content p {
-    font-size: 40px;
-  }
-}
-
-/* RESPONSIVO AJUSTADO */
 @media (min-width: 992px) {
   .aside-left {
     display: block;
