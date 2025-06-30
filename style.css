@@ -153,8 +153,8 @@ body.dark-mode .aside-anchor::before {
 
 #btn-topo {
   position: fixed;
-  bottom: 80px; /* acima do botão de tema */
-  right: 20px;
+  bottom: 80px;
+  left: 20px; /* ⬅️ Aqui está a mudança principal */
   z-index: 998;
   background-color: #38618c;
   color: white;
@@ -164,7 +164,7 @@ body.dark-mode .aside-anchor::before {
   padding: 12px 16px;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  display: none; /* escondido inicialmente */
+  display: none;
   transition: opacity 0.3s ease;
 }
 
