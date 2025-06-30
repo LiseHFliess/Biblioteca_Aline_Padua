@@ -166,8 +166,12 @@ body.dark-mode .aside-anchor::before {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: none;
   transition: opacity 0.3s ease;
+  z-index: 10000;
+  
 }
 
 #btn-topo:hover {
   background-color: #2c4965;
 }
+
+
