@@ -7,14 +7,43 @@
   box-sizing: border-box;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 body,
 html {
   background-color: #fff;
-  height: 100%;
+  
   width: 100%;
   font-family: "Montserrat", sans-serif;
+   max-width: 100%;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+ 
+
+
 }
+
+.footer-spacer {
+  height: 400px;
+}
+
+body.menu-open {
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 
 /* BLOQUEIO DE SCROLL QUANDO MENU ESTÁ ABERTO */
 body.menu-open {
@@ -33,12 +62,21 @@ main {
   margin-bottom: 40px;
 }
 
-.saga h2 {
+.saga-titulo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   font-size: 1.8em;
   margin: 20px;
   color: #333;
   border-bottom: 2px solid #38618c;
   padding-bottom: 5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.saga-logo {
+  height: 40px;
+  width: auto;
 }
 
 .card-container {
@@ -53,7 +91,7 @@ main {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  transition: transform 0.2s, background-color 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   text-decoration: none;
 }
@@ -73,24 +111,8 @@ main {
   font-size: 0.95em;
   color: #333;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
-
-.saga-titulo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 1.8em;
-  margin: 20px;
-  color: #333;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
-}
-
-.saga-logo {
-  height: 40px;
-  width: auto;
-}
-
 
 /* BOTÃO DE TEMA */
 .theme-toggle {
@@ -106,7 +128,7 @@ main {
   cursor: pointer;
   font-size: 14px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .theme-toggle:hover {
@@ -116,7 +138,7 @@ main {
 /* TEMA ESCURO */
 body.dark-mode {
   background-color: #1e1e1e;
-  color: #f0f0f0;
+  color: #eaeaea;
 }
 
 body.dark-mode .card {
@@ -128,10 +150,18 @@ body.dark-mode .titulo-livro {
   color: #f0f0f0;
 }
 
-body.dark-mode .saga h2,
 body.dark-mode .saga-titulo {
   color: #f0f0f0;
   border-color: #555;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: #666;
 }
 
 body.dark-mode .aside-right {
@@ -150,28 +180,53 @@ body.dark-mode .aside-anchor::before {
   background-color: #fff;
 }
 
-
-#btn-topo {
+.scroll-top {
   position: fixed;
-  bottom: 80px;
-  left: 20px; /* ⬅️ Aqui está a mudança principal */
-  z-index: 998;
-  background-color: #38618c;
-  color: white;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+  padding: 10px;
+  background-color: #38618c; /* Cor de fundo padrão */
   border: none;
   border-radius: 50%;
-  font-size: 24px;
-  padding: 12px 16px;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  display: none;
-  transition: opacity 0.3s ease;
-  z-index: 10000;
-  
+  opacity: 0;
+  pointer-events: none;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
 }
 
-#btn-topo:hover {
-  background-color: #2c4965;
+.scroll-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  background-color: #2c4965; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05);
+}
+
+.scroll-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Tema escuro */
+body.dark-mode .scroll-top {
+  background-color: #444;
+}
+
+body.dark-mode .scroll-top:hover {
+  background-color: #666;
 }
 
 
+/* Tema escuro (opcional) */
+body.dark-mode .scroll-top:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

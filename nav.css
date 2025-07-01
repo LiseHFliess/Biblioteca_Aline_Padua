@@ -1,45 +1,22 @@
-.aside-right {
-  background-image: url('BANNER.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white; /* garante contraste com o fundo */
-background-attachment: fixed;
-}
-
-.aside-right::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* escurece o fundo */
-  z-index: 0;
-}
-
-.aside-list,
-.aside-anchor,
-.aside-content {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* MENU HAMBÚRGUER */
+/* ===== RESET ===== */
 input[type="checkbox"] {
   display: none;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ===== BOTÃO HAMBÚRGUER ===== */
 label {
-  top: 10px;
-  right: 10px;
   display: inline-block;
-  padding: 7px 10px;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 10px;
-  z-index: 3;
   position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  cursor: pointer;
+  padding: 10px;
+  background-color: transparent;
 }
 
 .bar {
@@ -49,85 +26,62 @@ label {
   height: 3px;
   border-radius: 5px;
   margin: 5px auto;
-  transition: background-color 0.4s ease-in, transform 0.4s ease-in, width 0.4s ease-in;
+  transition: all 0.4s ease-in-out;
 }
 
-.middle {
-  margin: 0 auto;
-}
-
-/* ANIMAÇÃO DO BOTÃO */
 input[type="checkbox"]:checked ~ label .bar {
   background-color: #fff;
 }
 
 input[type="checkbox"]:checked ~ label .top {
-  transform: translateY(0px) rotateZ(45deg);
+  transform: translateY(8px) rotateZ(45deg);
 }
 
 input[type="checkbox"]:checked ~ label .bottom {
-  transform: translateY(-15px) rotateZ(-45deg);
+  transform: translateY(-8px) rotateZ(-45deg);
 }
 
 input[type="checkbox"]:checked ~ label .middle {
   width: 0;
+  opacity: 0;
 }
 
-/* MENU FULLSCREEN */
+/* ===== MENU ===== */
 aside {
-  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
   z-index: 2;
 }
 
 input[type="checkbox"]:checked ~ aside {
+  opacity: 1;
   pointer-events: auto;
 }
 
-.aside-section {
-  top: 0;
-  bottom: 0;
-  position: absolute;
-}
-
+/* ===== CONTEÚDO DO MENU ===== */
 .aside-left {
-  display: none;
-  width: 40%;
-  left: 0;
   background-color: #38618c;
-  transform: translateY(-100%);
-  transition: transform 0.4s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-.aside-right {
-  width: 100%;
-  right: 0;
-  background-color: #38618c;
-  transform: translateX(100%);
-  transition: transform 0.4s ease-in-out;
-}
-
-input[type="checkbox"]:checked ~ aside .aside-left {
-  transform: translateY(0%);
-}
-
-input[type="checkbox"]:checked ~ aside .aside-right {
-  transform: translateX(0%);
-}
-
-/* CONTEÚDO DO MENU */
 .aside-content {
-  margin-top: 120px;
-  padding: 0 40px;
-  color: white;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+  text-align: center;
 }
 
 .perfil-img {
@@ -138,17 +92,9 @@ input[type="checkbox"]:checked ~ aside .aside-right {
   margin-bottom: 30px;
   border: 4px solid white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.aside-content p {
-  font-size: 30px;
 }
 
 .button {
-  display: inline-block;
   background-color: transparent;
   border: 2px solid white;
   color: white;
@@ -157,20 +103,38 @@ input[type="checkbox"]:checked ~ aside .aside-right {
   cursor: pointer;
 }
 
-/* LINKS DO MENU */
-.aside-list {
-  list-style: none;
-  margin-top: 150px;
-  padding-left: 50px;
+.aside-right {
+  background-image: url('BANNER.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-.aside-list li {
+.aside-right::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.aside-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .aside-anchor {
@@ -210,91 +174,88 @@ input[type="checkbox"]:checked ~ aside .aside-right {
   transform: translateX(100%);
 }
 
+/* ===== LAYOUT DESKTOP: HORIZONTAL ===== */
+@media (min-width: 992px) {
+  aside {
+    flex-direction: row;
+  }
 
+  .aside-left,
+  .aside-right {
+    width: 50%;
+    height: 100vh;
+  }
+
+  .aside-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ===== LAYOUT MOBILE: VERTICAL ===== */
 @media (max-width: 991px) {
-  /* Corrige o menu */
   aside {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    overflow-y: auto; /* permite scroll vertical */
-    -webkit-overflow-scrolling: touch;
-    display: flex;
+    height: 100vh;
     flex-direction: column;
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 2;
+    background-color: #fff;
   }
 
-  /* Quando o menu estiver aberto */
-  input[type="checkbox"]:checked ~ aside {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Blocos empilhados */
   .aside-left,
   .aside-right {
     width: 100%;
-    position: relative;
-    transform: none;
-    transition: none;
-    flex-shrink: 0; /* evita colapso */
-  }
-
-  .aside-left {
-    background-color: #38618c;
+    flex-shrink: 0;
     padding: 30px 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .aside-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .aside-right {
-    background-image: url('BANNER.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    color: white;
-    position: relative;
-  }
-
-  .aside-right::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
   }
 
   .aside-list {
-    position: relative;
-    z-index: 1;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     padding: 20px;
   }
 
-  main {
-    margin: 0;
-    padding-top: 30px;
+  label {
+    display: inline-block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
   }
 
-  /* Garante que o botão hambúrguer fique por cima sempre */
-  label {
-    z-index: 9999;
+  .bar {
+    display: block;
+    background-color: #38618c;
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    margin: 5px auto;
+    transition: all 0.4s ease-in-out;
+  }
+
+  input[type="checkbox"]:checked ~ label .bar {
+    background-color: #fff;
+  }
+
+  input[type="checkbox"]:checked ~ label .top {
+    transform: translateY(8px) rotateZ(45deg);
+  }
+
+  input[type="checkbox"]:checked ~ label .bottom {
+    transform: translateY(-8px) rotateZ(-45deg);
+  }
+
+  input[type="checkbox"]:checked ~ label .middle {
+    width: 0;
+    opacity: 0;
   }
 }
