@@ -101,6 +101,7 @@ input[type="checkbox"]:checked ~ aside {
   font-size: 20px;
   padding: 7px 50px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .aside-right {
@@ -112,7 +113,10 @@ input[type="checkbox"]:checked ~ aside {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  max-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 .aside-right::before {
@@ -132,9 +136,12 @@ input[type="checkbox"]:checked ~ aside {
   flex-direction: column;
   gap: 30px;
   list-style: none;
-  padding: 0;
+  padding: 40px 20px;
   margin: 0;
   align-items: center;
+  max-height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .aside-anchor {
@@ -172,6 +179,18 @@ input[type="checkbox"]:checked ~ aside {
 
 .aside-anchor:hover::before {
   transform: translateX(100%);
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+.aside-right::-webkit-scrollbar,
+.aside-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aside-right::-webkit-scrollbar-thumb,
+.aside-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
 }
 
 /* ===== LAYOUT DESKTOP: HORIZONTAL ===== */
@@ -212,6 +231,11 @@ input[type="checkbox"]:checked ~ aside {
     width: 100%;
     flex-shrink: 0;
     padding: 30px 20px;
+  }
+
+  .aside-right {
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   .aside-list {
