@@ -230,3 +230,86 @@ body.dark-mode .scroll-top:hover {
 body.dark-mode .scroll-top:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+
+/* Responsivo para tablets */
+@media (max-width: 991px) {
+  main {
+    padding: 80px 15px 30px;
+  }
+
+  .saga-titulo {
+    font-size: 1.5em;
+    margin: 15px;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .titulo-livro {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+}
+
+/* Responsivo para celulares */
+@media (max-width: 600px) {
+  main {
+    padding: 60px 10px 20px;
+  }
+
+  .saga-titulo {
+    font-size: 1.3em;
+    margin: 10px;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .titulo-livro {
+    font-size: 0.85em;
+    padding: 6px;
+  }
+
+  .card {
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+}
+
+.footer {
+  background-color: #38618c;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.footer-icons a img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.footer-icons a:hover img {
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  font-size: 14px;
+  opacity: 0.8;
+}

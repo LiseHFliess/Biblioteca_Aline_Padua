@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre a Autora</title>
+  <link rel="stylesheet" href="autora.css" />
+  <link rel="stylesheet" href="menuAutora.css">
+</head>
+<body>
+
+  <!-- MENU HAMBÚRGUER -->
+  <input type="checkbox" id="myInput" />
+  <label for="myInput">
+    <span class="bar top"></span>
+    <span class="bar middle"></span>
+    <span class="bar bottom"></span>
+  </label>
+
+  <!-- MENU FULLSCREEN -->
+  <aside>
+    <div class="aside-section aside-left">
+      <div class="aside-content">
+        <img src="CAPA.MENUAUTORA.png" alt="Foto de perfil" class="perfil-img" />
+        <button class="button">LIVROS</button>
+      </div>
+    </div>
+
+    <div class="aside-section aside-right">
+      <ul class="aside-list">
+        <li><a href="index.html#saga1" class="aside-anchor">Os Hansen</a></li>
+        <li><a href="index.html#saga2" class="aside-anchor">Máfia Grega</a></li>
+        <li><a href="index.html#saga3" class="aside-anchor">Cartel García</a></li>
+        <li><a href="index.html#saga4" class="aside-anchor">Os Kangs</a></li>
+        <li><a href="index.html#saga5" class="aside-anchor">Torres-Reis</a></li>
+        <li><a href="index.html#saga6" class="aside-anchor">Irmãos Esteves</a></li>
+        <li><a href="index.html#saga7" class="aside-anchor">Irmãs Junqueira</a></li>
+      </ul>
+    </div>
+  </aside>
+
+<body>
+
+    <!-- Botão de voltar -->
+    <a href="index.html" class="theme-toggle voltar">← Voltar</a>
+
+
+    <main>
+        <section class="saga">
+            <h1 class="saga-titulo">Sobre a Autora</h1>
+            <div class="card-container sobre-autora">
+                <div class="autora-box">
+                    <img src="AUTORA.jpg" alt="Foto da autora" class="autora-img" />
+                    <div class="autora-texto">
+                        <p><strong>ALINE PÁDUA</strong> <br> Aline, Line, criadora do #Alineverso, e como você quiser.
+
+                            <p>Feita por músicas (swiftie e stay de carteirinha), novelas (dorama, mexicana, colombiana,
+                            turca, e o que mais tiver), gatos e livros (apaixonada por fanfics). </p>
+                            
+                            <p>Mineira que começou sua
+                            jornada com livros através de poesias na escola primária e se apaixonou por completo por
+                            eles quando conheceu os romances aos quatorze anos. </p>
+                            
+                            <p>Agora, escreve seus próprios e os
+                            publica de forma independente. Encontre-me no instagram @alineapadua</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Footer com redes sociais -->
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/alineapadua/" target="_blank" aria-label="Instagram">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@autoralinepadua" target="_blank" aria-label="TikTok">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+            </a>
+            <a href="https://www.amazon.com.br/stores/author/B07FM2BQ4X" target="_blank" aria-label="Amazon">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg" alt="Amazon">
+            </a>
+
+            <button class="theme-toggle" id="toggleTheme">🌙 Tema Escuro</button>
+
+
+
+        </div>
+        <p class="footer-copy">© 2025 Lise. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        const body = document.body;
+        const themeToggle = document.getElementById('toggleTheme');
+
+        // Aplica o tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ Tema Claro';
+        }
+
+        // Alterna o tema ao clicar
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️ Tema Claro';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙 Tema Escuro';
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
